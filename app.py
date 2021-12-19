@@ -5,12 +5,17 @@ import requests
 from bs4 import BeautifulSoup
 
 from pymongo import MongoClient
+
 client = MongoClient('localhost', 27017)
 db = client.wishbasket
+
+from bson import json_util
+import json
 
 @app.route('/')
 def home():
     return render_template('index.html')
+
 
 # APIs
 # 아이템 추가하기
@@ -44,6 +49,12 @@ def add_item():
 
     return jsonify({'msg': '아이템이 위시바구니에 추가되었습니다!'})
 
+# 전체 아이템 가져오기
+@app.route('/wish', methods=['GET'])
+def get_all_items():
+    items = list(db.wishlist.find({}))
+    items_sanitised = json.loads(json_util.dumps(items))
+    return jsonify({'all_items': items_sanitised})
 
 if __name__ == '__main__':
     app.run('0.0.0.0', port=5000, debug=True)
