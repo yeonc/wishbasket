@@ -9,7 +9,7 @@ from pymongo import MongoClient
 client = MongoClient('localhost', 27017)
 db = client.wishbasket
 
-from bson import json_util
+from bson import json_util, ObjectId
 import json
 
 @app.route('/')
@@ -55,6 +55,12 @@ def get_all_items():
     items = list(db.wishlist.find({}))
     items_sanitised = json.loads(json_util.dumps(items))
     return jsonify({'all_items': items_sanitised})
+
+# 아이템 삭제하기
+@app.route('/wish/<id>', methods=['DELETE'])
+def delete_item(id):
+    db.wishlist.delete_one({'_id': ObjectId(id)})
+    return jsonify({'msg': '아이템이 위시바구니에서 삭제되었습니다!'})
 
 if __name__ == '__main__':
     app.run('0.0.0.0', port=5000, debug=True)
