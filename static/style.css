@@ -41,3 +41,33 @@ li {
   padding-left: 0;
   margin-left: 0;
 }
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px;
+    background-color: #EEF0F2;
+}
+
+.header .logo img {
+    height: 70px;
+}
+
+.header .button-group {
+    display: flex;
+}
+
+.header .all-tags {
+    margin-right: 8px;
+}
+
+.header .dropdown-menu .fa-bars {
+    margin-right: 4px;
+    font-size: 24px;
+}
+
+.header .dropdown-menu .fa-th {
+    margin-right: 4px;
+    font-size: 21px;
+}
