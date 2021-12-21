@@ -49,12 +49,20 @@ def add_item():
 
     return jsonify({'msg': '아이템이 위시바구니에 추가되었습니다!'})
 
-# 전체 아이템 가져오기
+# 전체 아이템 가져오기: /wish
+# 특정 태그가 포함된 아이템 가져오기: /wish?tag={태그명}
 @app.route('/wish', methods=['GET'])
-def get_all_items():
-    items = list(db.wishlist.find({}))
+def get_items():
+    tag = request.args.get('tag')
+
+    if tag is None:
+        items = list(db.wishlist.find({}))
+    else:
+        tag_name = request.args.get('tag')
+        items = list(db.wishlist.find({'tags': tag_name}))
+
     items_sanitised = json.loads(json_util.dumps(items))
-    return jsonify({'all_items': items_sanitised})
+    return jsonify({'items': items_sanitised})
 
 # 아이템 삭제하기
 @app.route('/wish/<id>', methods=['DELETE'])
