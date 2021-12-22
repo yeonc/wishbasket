@@ -133,4 +133,37 @@ li {
     width: 8px;
     height: 8px;
 }
+
+/* Modal */
+.modal-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    right: 30px;
+    bottom: 30px;
+    width: 54px;
+    height: 54px;
+    border: none;
+    border-radius: 50%;
+}
+
+.modal-button .fa-plus {
+    font-size: 32px;
+}
+
+.modal-body input,
+.modal-body textarea {
+    font-size: 18px;
+}
+
+.input-memo {
+    height: 150px;
+}
+
+.input-url::placeholder,
+.input-price::placeholder,
+.input-memo::placeholder,
+.input-tag::placeholder {
+    font-size: 18px;
 }
