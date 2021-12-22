@@ -134,6 +134,32 @@ li {
     height: 8px;
 }
 
+/* 특정한 태그에 대한 결과 보기 */
+.tag-header {
+    margin-bottom: 36px;
+    text-align: center;
+}
+
+.tag-title {
+    margin: 0 auto 18px;
+}
+
+.tag-hash {
+    margin-right: 8px;
+    font-size: 68px;
+}
+
+.tag-text {
+    display: inline;
+    font-size: 68px;
+}
+
+.tag-all {
+    display: block;
+    margin-left: auto;
+}
+
+
 /* Modal */
 .modal-button {
     display: flex;
