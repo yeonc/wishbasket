@@ -71,3 +71,65 @@ li {
     margin-right: 4px;
     font-size: 21px;
 }
+
+/* Main Page - main */
+.cards-container {
+    max-width: 1200px;
+    padding: 30px 24px;
+    margin: auto;
+}
+
+.cards-container .card {
+    position: relative;
+}
+
+.card-header-wrap {
+    margin-bottom: 16px;
+}
+
+.card-image {
+    object-fit: cover;
+    height: 100%;
+}
+
+.card-title {
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.card-price {
+    font-weight: 500;
+}
+
+.card-desc {
+    font-size: 18px;
+    color: #59656F;
+}
+
+.card-memo {
+    font-size: 16px;
+    color: #3F66AF;
+}
+
+.card-date {
+    font-size: 16px;
+    color: #ACA9BB;
+}
+
+.card-tag {
+    border: none;
+}
+
+.card-footer-wrap {
+    display: flex;
+    justify-content: space-between;
+}
+
+.card-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 8px;
+    height: 8px;
+}
+}
