@@ -23,7 +23,7 @@
     <!-- Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
@@ -226,5 +226,50 @@
         </div>
     </div>
 </main>
+
+<!-- Modal (button & Window)  -->
+<aside class="modal-wrap">
+    <button type="button" class="btn btn-primary modal-button" data-bs-toggle="modal" data-bs-target="#exampleModal"
+            data-bs-whatever="@mdo">
+        <i class="fas fa-plus"></i>
+    </button>
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">🛒🛍️ 나의 위시바구니에 추가하기</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label for="url" class="col-form-label">URL</label>
+                            <input type="url" class="form-control input-url"
+                                   placeholder="사고 싶은 아이템의 상세 페이지 주소를 복붙해 주세요!" id="url" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="price" class="col-form-label">Price</label>
+                            <input type="number" class="form-control input-price"
+                                   placeholder="아이템의 가격을 입력하세요!" id="price">
+                        </div>
+                        <div class="mb-3">
+                            <label for="memo" class="col-form-label">Memo</label>
+                            <textarea class="form-control input-memo" placeholder="메모를 남겨보세요! (200자 이내)"
+                                      id="memo" maxlength="200"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="tag" class="col-form-label">Tag</label>
+                            <input type="url" class="form-control input-tag"
+                                   placeholder="아이템을 잘 표현할 수 있는 하나의 태그를 적어보세요!" id="tag">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary">추가할게요!</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</aside>
 </body>
 </html>
