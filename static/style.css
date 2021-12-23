@@ -159,6 +159,16 @@ li {
     margin-left: auto;
 }
 
+/* 모든 태그 보기 */
+.tag-container {
+    max-width: 800px;
+    margin: 54px auto 12px;
+    text-align: center;
+}
+
+.tag-button {
+    margin: 0 6px 20px 0;
+}
 
 /* Modal */
 .modal-button {
