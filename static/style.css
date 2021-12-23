@@ -80,6 +80,11 @@ li {
     margin: auto;
 }
 
+.cards-simple .card-price {
+    display: block;
+    margin-bottom: 12px;
+}
+
 .cards-container .card {
     position: relative;
 }
