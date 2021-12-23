@@ -12,6 +12,8 @@ db = client.wishbasket
 from bson import json_util, ObjectId
 import json
 
+import datetime
+
 @app.route('/')
 def home():
     return render_template('index.html')
@@ -36,6 +38,9 @@ def add_item():
     desc = soup.select_one('meta[property="og:description"]')['content']
     image = soup.select_one('meta[property="og:image"]')['content']
 
+    date = datetime.datetime.now()
+    date_string = date.strftime('%Y-%m-%d %H:%M')
+
     item = {
         'name': name,
         'desc': desc,
@@ -43,7 +48,8 @@ def add_item():
         'url': url_receive,
         'memo': memo_receive,
         'tags': tags_receive,
-        'price': price_receive
+        'price': price_receive,
+        'date': date_string
     }
     db.wishlist.insert_one(item)
 
