@@ -60,3 +60,49 @@ function showAllItems() {
         }
     )
 }
+
+function showAllItemsWithSimpleView() {
+    $('#cards-box').empty();
+    $.ajax({
+            type: "GET",
+            url: "/wish",
+            data: {},
+            success: function (response) {
+                let items = response['items'];
+                for (let i = 0; i < items.length; i++) {
+                    let image = items[i]['image'];
+                    let name = items[i]['name'];
+                    let price = items[i]['price'];
+                    let tags = items[i]['tags'];
+                    let url = items[i]['url'];
+
+                    let wrapper_html = `<div id="simple-view" class="row row-cols-1 row-cols-md-3 g-4 cards-simple"></div>`
+                    let temp_html = `<div class="col">
+                                        <div class="card h-100">
+                                            <img src="${image}" class="card-img-top"
+                                                 alt="Wish item">
+                                            <div class="card-body">
+                                                <h2 class="card-title">
+                                                    <a href="${url}"
+                                                       target="_blank">
+                                                        ${name}</a>
+                                                </h2>
+                                                <strong class="card-price">
+                                                    <span class="price">${price}</span>
+                                                    <span class="won">원</span>
+                                                </strong>
+                                                <button type="button" class="badge rounded-pill bg-dark card-tag">
+                                                    <span>#</span>
+                                                    <span class="text">${tags}</span>
+                                                </button>
+                                                <button type="button" class="btn-close card-close" aria-label="Close"></button>
+                                            </div>
+                                        </div>
+                                    </div>`
+                    $('#cards-box').append(wrapper_html);
+                    $('#simple-view').append(temp_html);
+                }
+            }
+        }
+    )
+}
