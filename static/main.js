@@ -106,3 +106,25 @@ function showAllItemsWithSimpleView() {
         }
     )
 }
+
+function addItem() {
+    let url = $('#form-url').val();
+    let memo = $('#form-memo').val();
+    let tag = $('#form-tag').val();
+    let price = $('#form-price').val();
+
+    $.ajax({
+        type: 'POST',
+        url: '/wish',
+        data: {
+            url_give: url,
+            memo_give: memo,
+            tags_give: tag,
+            price_give: price,
+        },
+        success: function (response) {
+            alert(response['msg']);
+            window.location.reload();
+        }
+    })
+}
