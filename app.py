@@ -62,10 +62,10 @@ def get_items():
     tag = request.args.get('tag')
 
     if tag is None:
-        items = list(db.wishlist.find({}))
+        items = list(db.wishlist.find({}).sort('_id', -1))
     else:
         tag_name = request.args.get('tag')
-        items = list(db.wishlist.find({'tags': tag_name}))
+        items = list(db.wishlist.find({'tags': tag_name}).sort('_id', -1))
 
     items_sanitised = json.loads(json_util.dumps(items))
     return jsonify({'items': items_sanitised})
