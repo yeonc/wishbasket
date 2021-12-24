@@ -128,3 +128,31 @@ function addItem() {
         }
     })
 }
+
+function showAllTags() {
+    $('#cards-box').empty();
+    $.ajax({
+        type: "GET",
+        url: "/wish",
+        data: {},
+        success: function (response) {
+            const tagHeader = `<header class="tag-header">
+                                    <h1 class="tag-text">All Tags</h1>
+                               </header>`;
+            const tagContainer = `<div id="tags-box" className="tag-container"></div>`;
+            $('#cards-box').append(tagHeader);
+            $('#cards-box').append(tagContainer);
+
+            let items = response['items']
+            for (let i = 0; i < items.length; i++) {
+                let tag = items[i]['tags'];
+                let temp_html = `<button type="button" class="btn rounded-pill btn-dark tag-button">
+                                    <span class="button-hash">&sharp;</span>
+                                    <span class="button-text">${tag}</span>
+                                 </button>`;
+                $('#tags-box').append(temp_html);
+            }
+        }
+
+    })
+}
