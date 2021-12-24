@@ -44,7 +44,7 @@ function showAllItems() {
                                                     </p>
                                                     <footer class="card-footer-wrap">
                                                         <span class="card-date">${date}</span>
-                                                        <button type="button" class="badge rounded-pill bg-dark card-tag">
+                                                        <button type="button" class="badge rounded-pill bg-dark card-tag" onClick="showItemsAboutOneTag('${tags}')">
                                                             <span>#</span>
                                                             <span class="text">${tags}</span>
                                                         </button>
@@ -91,7 +91,7 @@ function showAllItemsWithSimpleView() {
                                                     <span class="price">${price}</span>
                                                     <span class="won">원</span>
                                                 </strong>
-                                                <button type="button" class="badge rounded-pill bg-dark card-tag">
+                                                <button type="button" class="badge rounded-pill bg-dark card-tag" onClick="showItemsAboutOneTag('${tags}')">
                                                     <span>#</span>
                                                     <span class="text">${tags}</span>
                                                 </button>
@@ -146,7 +146,7 @@ function showAllTags() {
             let items = response['items']
             for (let i = 0; i < items.length; i++) {
                 let tag = items[i]['tags'];
-                let temp_html = `<button type="button" class="btn rounded-pill btn-dark tag-button">
+                let temp_html = `<button type="button" class="btn rounded-pill btn-dark tag-button" onClick="showItemsAboutOneTag('${tag}')">
                                     <span class="button-hash">&sharp;</span>
                                     <span class="button-text">${tag}</span>
                                  </button>`;
@@ -154,5 +154,73 @@ function showAllTags() {
             }
         }
 
+    })
+}
+
+function showItemsAboutOneTag(tagName) {
+    $('#cards-box').empty();
+    $.ajax({
+        type: "GET",
+        url: `/wish?tag=${tagName}`,
+        data: {},
+        success: function (response) {
+            $('#all-tag-button').hide();
+            let tagHeader = `<header class="tag-header">
+                                    <div class="tag-title">
+                                        <i class="fas fa-hashtag tag-hash" aria-hidden="true"></i>
+                                        <h1 class="tag-text">${tagName}</h1>
+                                    </div>
+                                    <button type="button" class="btn btn-light tag-all" onClick="showAllTags()">모든 태그 보기</button>
+                                </header>`
+            $('#cards-box').append(tagHeader)
+
+            let items = response['items']
+            for (let i = 0; i < items.length; i++) {
+                let image = items[i]['image'];
+                let name = items[i]['name'];
+                let price = items[i]['price'];
+                let desc = items[i]['desc'];
+                let memo = items[i]['memo'];
+                let tags = items[i]['tags'];
+                let url = items[i]['url'];
+                let date = items[i]['date'];
+
+                let temp_html = `<div class="card mb-3">
+                                        <div class="row g-0">
+                                            <div class="col-md-3">
+                                                <img src="${image}"
+                                                     class="img-fluid rounded-start card-image" alt="Wish item">
+                                            </div>
+                                            <div class="col-md-9">
+                                                <div class="card-body">
+                                                    <header class="card-header-wrap">
+                                                        <h2 class="card-title">
+                                                            <a href="${url}"
+                                                               target="_blank">
+                                                                ${name}</a>
+                                                        </h2>
+                                                        <strong class="card-price">${price}</strong>
+                                                    </header>
+                                                    <p class="card-desc">${desc}
+                                                    </p>
+                                                    <p class="card-memo">
+                                                        <i class="fas fa-comment-dots"></i>
+                                                        ${memo}
+                                                    </p>
+                                                    <footer class="card-footer-wrap">
+                                                        <span class="card-date">${date}</span>
+                                                        <button type="button" class="badge rounded-pill bg-dark card-tag" onClick="showItemsAboutOneTag('${tags}')">
+                                                            <span>#</span>
+                                                            <span class="text">${tags}</span>
+                                                        </button>
+                                                    </footer>
+                                                    <button type="button" class="btn-close card-close" aria-label="Close"></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>`
+                $('#cards-box').append(temp_html);
+            }
+        }
     })
 }
