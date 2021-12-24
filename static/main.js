@@ -19,6 +19,7 @@ function showAllItems() {
                     let tags = items[i]['tags'];
                     let url = items[i]['url'];
                     let date = items[i]['date'];
+                    let id = items[i]['_id']['$oid'];
 
                     let temp_html = `<div class="card mb-3">
                                         <div class="row g-0">
@@ -49,7 +50,7 @@ function showAllItems() {
                                                             <span class="text">${tags}</span>
                                                         </button>
                                                     </footer>
-                                                    <button type="button" class="btn-close card-close" aria-label="Close"></button>
+                                                    <button type="button" class="btn-close card-close" aria-label="Close" onClick="deleteItem('${id}')"></button>
                                                 </div>
                                             </div>
                                         </div>
@@ -75,6 +76,7 @@ function showAllItemsWithSimpleView() {
                     let price = items[i]['price'];
                     let tags = items[i]['tags'];
                     let url = items[i]['url'];
+                    let id = items[i]['_id']['$oid'];
 
                     let wrapper_html = `<div id="simple-view" class="row row-cols-1 row-cols-md-3 g-4 cards-simple"></div>`
                     let temp_html = `<div class="col">
@@ -95,7 +97,7 @@ function showAllItemsWithSimpleView() {
                                                     <span>#</span>
                                                     <span class="text">${tags}</span>
                                                 </button>
-                                                <button type="button" class="btn-close card-close" aria-label="Close"></button>
+                                                <button type="button" class="btn-close card-close" aria-label="Close" onClick="deleteItem('${id}')"></button>
                                             </div>
                                         </div>
                                     </div>`
@@ -184,6 +186,7 @@ function showItemsAboutOneTag(tagName) {
                 let tags = items[i]['tags'];
                 let url = items[i]['url'];
                 let date = items[i]['date'];
+                let id = items[i]['_id']['$oid'];
 
                 let temp_html = `<div class="card mb-3">
                                         <div class="row g-0">
@@ -214,13 +217,25 @@ function showItemsAboutOneTag(tagName) {
                                                             <span class="text">${tags}</span>
                                                         </button>
                                                     </footer>
-                                                    <button type="button" class="btn-close card-close" aria-label="Close"></button>
+                                                    <button type="button" class="btn-close card-close" aria-label="Close" onClick="deleteItem('${id}')"></button>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>`
                 $('#cards-box').append(temp_html);
             }
+        }
+    })
+}
+
+function deleteItem(id) {
+    $.ajax({
+        type: 'DELETE',
+        url: `/wish/${id}`,
+        data: {},
+        success: function (response) {
+            alert(response['msg']);
+            window.location.reload();
         }
     })
 }
