@@ -107,6 +107,11 @@ li {
     font-weight: 500;
 }
 
+.card-price .won {
+    display: inline-block;
+    transform: translateX(-20%);
+}
+
 .card-desc {
     font-size: 18px;
     color: #59656F;

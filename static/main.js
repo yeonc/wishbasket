@@ -35,7 +35,10 @@ function showAllItems() {
                                                                target="_blank">
                                                                 ${name}</a>
                                                         </h2>
-                                                        <strong class="card-price">${price}</strong>
+                                                        <strong class="card-price">
+                                                            <span class="price">${price}</span>
+                                                            <span class="won">원</span>
+                                                        </strong>
                                                     </header>
                                                     <p class="card-desc">${desc}
                                                     </p>
@@ -202,7 +205,10 @@ function showItemsAboutOneTag(tagName) {
                                                                target="_blank">
                                                                 ${name}</a>
                                                         </h2>
-                                                        <strong class="card-price">${price}</strong>
+                                                        <strong class="card-price">
+                                                            <span class="price">${price}</span>
+                                                            <span class="won">원</span>
+                                                        </strong>
                                                     </header>
                                                     <p class="card-desc">${desc}
                                                     </p>
