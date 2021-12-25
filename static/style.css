@@ -154,6 +154,10 @@ li {
     margin: 0 auto 18px;
 }
 
+.tag-button-group {
+    display: flex;
+}
+
 .tag-hash {
     margin-right: 8px;
     font-size: 68px;
@@ -166,7 +170,7 @@ li {
 
 .tag-all {
     display: block;
-    margin-left: auto;
+    margin: 0 6px 0 auto;
 }
 
 /* 모든 태그 보기 */
