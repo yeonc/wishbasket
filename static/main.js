@@ -148,9 +148,18 @@ function showAllTags() {
             $('#cards-box').append(tagHeader);
             $('#cards-box').append(tagContainer);
 
-            let items = response['items']
-            for (let i = 0; i < items.length; i++) {
-                let tag = items[i]['tags'];
+            // 태그 중복 제거
+            const items = response['items'];
+            const tags = items.map(item => item.tags);
+            const filteredTags = [];
+            tags.forEach(tag => {
+                if(!filteredTags.includes(tag)) {
+                    filteredTags.push(tag);
+                }
+            })
+
+            for (let i = 0; i < filteredTags.length; i++) {
+                let tag = filteredTags[i];
                 let temp_html = `<button type="button" class="btn rounded-pill btn-dark tag-button" onClick="showItemsAboutOneTag('${tag}')">
                                     <span class="button-hash">&sharp;</span>
                                     <span class="button-text">${tag}</span>
