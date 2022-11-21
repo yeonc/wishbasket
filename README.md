@@ -7,7 +7,7 @@
 
 
 ## 웹사이트 링크
-<a href="http://mochayn.shop/" target="_blank">Link - Wishbasket</a>
+<a href="http://mochayn.shop/" target="_blank"><del>Link - Wishbasket</del></a>(2022.11.21부터 도메인 기한 만기로 사이트 접속 불가능)
 
 ## 데모
 <img width="600" alt="[wishbasket-demo" src="https://user-images.githubusercontent.com/91853870/147402366-a791eb55-2656-45bb-94c1-0b9d44406e13.gif">
@@ -33,6 +33,3 @@
 - 등록된 아이템을 삭제할 수 있다. (아이템 카드의 오른쪽 상단 X 버튼 클릭)
 - 특정한 태그에 해당하는 아이템들만을 필터링해서 볼 수 있다. (View 전환 가능 - 간단히/자세하게)
 - 등록된 모든 태그들을 확인할 수 있다. 태그를 누르면 해당 태그가 붙어 있는 아이템들만을 확인할 수 있는 뷰로 이동한다.
-
-## 회고
-<a href="https://yeonc.tistory.com/entry/WIL-%ED%95%AD%ED%95%B499-%EC%82%AC%EC%A0%84-%EC%A4%80%EB%B9%84-3%EC%A3%BC%EC%B0%A8-%EA%B0%9C%EC%9D%B8-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%ED%9A%8C%EA%B3%A0" target="_blank">[WIL] 항해99 사전 준비 3주차 - 개인 프로젝트 회고</a>
